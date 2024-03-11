@@ -120,11 +120,13 @@ class TodoApp(UserControl):
         )
 
     def add_clicked(self, e):
-        task = Task(self.new_task.value, self.task_status_change, self.task_delete)
-        self.tasks.controls.append(task)
-        self.new_task.value = ""
-        self.update()
-
+        task_name = self.new_task.value.strip()
+        if task_name:
+            task = Task(self.new_task.value, self.task_status_change, self.task_delete)
+            self.tasks.controls.append(task)
+            self.new_task.value = ""
+            self.update()
+        
     def task_status_change(self, task):
         self.update()
 
